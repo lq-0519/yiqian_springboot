@@ -1,0 +1,25 @@
+server:
+  port: 80
+spring:
+  data:
+    elasticsearch:
+      cluster-name: ENC(92RIwOBxpyQkMEqYeBGQx9pi3rk6WbPy)
+      cluster-nodes: 182.92.81.132:9300 # 程序连接es的端口号是9300
+  datasource: # 设置数据库相关
+    url: jdbc:mysql://182.92.81.132/yiqianLibrary?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: ENC(VW6YfL9r7EWVlPzB0cQLxA==)
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      max-lifetime: 28830000 # 一个连接的生命时⻓(毫秒)，超时而且没被使用则被释放 (retired)，缺省:30分钟，建议设置比数据库超时时⻓少30秒，参考MySQL wait_timeout参数(show variables like '%timeout%';)
+      maximum-pool-size: 9 # 连接池中允许的最大连接数。缺省值:10; 推荐的公式:((core_count * 2) + effective_spindle_count)
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+mybatis:
+  type-aliases-package: lq.yiqian.domain
+
+#jasypt: # 项目使用jasypt加密
+#  encryptor:
+#    password: 盐值建议不要在配置文件中配置, 配置到环境变量或者启动参数中
