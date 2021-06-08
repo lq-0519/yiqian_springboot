@@ -5,18 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author LQ
  * @create 2020-07-05 10:05
- */
-
-/**
+ *
  * ip地址相关工具类
  */
 public class IpUtils {
 
     /**
      * 获取ip地址
-     *
-     * @param request
-     * @return
      */
     public static String getIp(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
