@@ -7,6 +7,7 @@ import lq.yiqian.service.IUtilsService;
 import lq.yiqian.utils.es.pojo.Book;
 import lq.yiqian.utils.es.repository.BookRepository;
 import lq.yiqian.utils.es.resultMapper.HighlightResultMapper;
+import lq.yiqian.utils.threadPool.ThreadPoolUtils;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.BeanUtils;
@@ -100,19 +101,21 @@ public class UtilsService implements IUtilsService {
     public void dataTransferToES() {
         log.warn("dataTransferToES, 数据转移开始...");
         long start = System.currentTimeMillis();
-        int page = 1;
-        List<Book> all;
-        do {
-            all = bookListMapper.findAllForPage((page - 1) * 1000);
-            page++;
-            LinkedList<Book> books = new LinkedList<>();
-            for (Book book : all) {
-                Book book1 = new Book();
-                BeanUtils.copyProperties(book, book1);
-                books.add(book1);
-            }
-            bookRepository.saveAll(books);
-        } while (all.size() == 1000);
+        ThreadPoolUtils.execute(() -> {
+            int page = 1;
+            List<Book> all;
+            do {
+                all = bookListMapper.findAllForPage((page - 1) * 1000);
+                page++;
+                LinkedList<Book> books = new LinkedList<>();
+                for (Book book : all) {
+                    Book book1 = new Book();
+                    BeanUtils.copyProperties(book, book1);
+                    books.add(book1);
+                }
+                bookRepository.saveAll(books);
+            } while (all.size() == 1000);
+        });
         long end = System.currentTimeMillis();
         log.warn("dataTransferToES, 数据转移耗时: {} ms", (end - start));
     }
