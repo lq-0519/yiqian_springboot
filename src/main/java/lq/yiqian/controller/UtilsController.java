@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
+ * mock工具类
+ * 没有前端入口, 使用postMan操作
+ *
  * @author LQ
  * @create 2021-05-06 21:04
  */
