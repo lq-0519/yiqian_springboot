@@ -1,5 +1,6 @@
 package lq.yiqian.service.impl;
 
+import lombok.extern.log4j.Log4j2;
 import lq.yiqian.mapper.BookListMapper;
 import lq.yiqian.service.ISearchHistoryService;
 import lq.yiqian.service.IUtilsService;
@@ -27,6 +28,7 @@ import java.util.List;
  * @create 2021-05-06 21:05
  */
 @Service
+@Log4j2
 public class UtilsService implements IUtilsService {
 
     @Resource
@@ -96,7 +98,7 @@ public class UtilsService implements IUtilsService {
     @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
     @Override
     public void dataTransferToES() {
-        System.out.println("数据转移开始...");
+        log.warn("dataTransferToES, 数据转移开始...");
         long start = System.currentTimeMillis();
         int page = 1;
         List<Book> all;
@@ -112,7 +114,7 @@ public class UtilsService implements IUtilsService {
             bookRepository.saveAll(books);
         } while (all.size() == 1000);
         long end = System.currentTimeMillis();
-        System.out.println("数据转移耗时: " + (end - start) + " ms");
+        log.warn("dataTransferToES, 数据转移耗时: {} ms", (end - start));
     }
 
     @Override

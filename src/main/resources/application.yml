@@ -3,12 +3,12 @@ server:
 spring:
   data:
     elasticsearch:
-      cluster-name: ENC(92RIwOBxpyQkMEqYeBGQx9pi3rk6WbPy)
+      cluster-name: ENC(gaBqGWoAcof4a4L7MMojxdiaxTeAf5qyZOyoxmrvfek=)
       cluster-nodes: 182.92.81.132:9300 # 程序连接es的端口号是9300
   datasource: # 设置数据库相关
     url: jdbc:mysql://182.92.81.132/yiqianLibrary?characterEncoding=utf-8&useSSL=false
     username: root
-    password: ENC(VW6YfL9r7EWVlPzB0cQLxA==)
+    password: ENC(7Kcv4fPB3xlPI+UgtA8GYL2Cp/MSzQ7A)
     driver-class-name: com.mysql.jdbc.Driver
     hikari:
       max-lifetime: 28830000 # 一个连接的生命时⻓(毫秒)，超时而且没被使用则被释放 (retired)，缺省:30分钟，建议设置比数据库超时时⻓少30秒，参考MySQL wait_timeout参数(show variables like '%timeout%';)
