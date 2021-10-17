@@ -3,6 +3,7 @@ package lq.yiqian.controller;
 import lq.yiqian.service.IUtilsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
@@ -30,6 +31,7 @@ public class UtilsController {
      * 创建索引
      */
     @RequestMapping("createIndex")
+    @ResponseBody
     public void createIndex() {
         utilsService.createIndex();
     }
@@ -38,23 +40,29 @@ public class UtilsController {
      * 测试
      */
     @RequestMapping("testES")
-    public void testES() {
+    @ResponseBody
+    public String testES() {
         utilsService.testES();
+        return "任务提交";
     }
 
     /**
      * 数据转移
      */
     @RequestMapping("dataTransferToES")
-    public void dataTransferToES() {
+    @ResponseBody
+    public String dataTransferToES() {
         utilsService.dataTransferToES();
+        return "数据转移任务提交!";
     }
 
     /**
      * 更新总搜索次数
      */
+    @ResponseBody
     @RequestMapping("updateSearchNum")
-    public void updateSearchNum(){
+    public String updateSearchNum(){
         utilsService.updateSearchNum();
+        return "更新总搜索次数 任务提交";
     }
 }
