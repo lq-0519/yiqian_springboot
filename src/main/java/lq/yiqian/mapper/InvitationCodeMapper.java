@@ -10,7 +10,7 @@ import tk.mybatis.mapper.common.Mapper;
 import java.util.List;
 
 /**
- * 操作邀请码列表(invitationCode)的类
+ * 操作邀请码列表(invitation_code)的类
  *
  * @author LQ
  * @create 2020-06-24 17:35
@@ -19,24 +19,24 @@ public interface InvitationCodeMapper extends Mapper<InvitationCode> {
     /**
      * 查询所有
      */
-    @Select("select invitationCode, username, userId, accountType, createDate, sum, last  " +
-            " from invitationCode  " +
+    @Select("select invitation_code, username, userId, accountType, createDate, sum, last  " +
+            " from invitation_code  " +
             "order by createDate desc")
     List<InvitationCode> findAll();
 
     /**
      * 根据条件查询
      */
-    @Select("select invitationCode, username, userId, accountType, createDate, sum, last  " +
-            " from invitationCode where invitationCode like #{condition} or username like #{condition}  or userId like #{condition} " +
+    @Select("select invitation_code, username, userId, accountType, createDate, sum, last  " +
+            " from invitation_code where invitation_code like #{condition} or username like #{condition}  or userId like #{condition} " +
             "order by createDate desc")
     List<InvitationCode> findByCondition(String condition);
 
     /**
      * 根据邀请码查询
      */
-    @Select("select invitationCode, username, userId, accountType, createDate, sum, last from invitationCode where invitationCode = #{invitationCodeId}")
-    InvitationCode findById(String invitationCodeId);
+    @Select("select invitation_code, username, userId, accountType, createDate, sum, last from invitation_code where invitation_code = #{invitationCode}")
+    InvitationCode findById(String invitationCode);
 
     /**
      * 更新sum和last的值
@@ -44,19 +44,19 @@ public interface InvitationCodeMapper extends Mapper<InvitationCode> {
      * sum++
      * last++
      */
-    @Update("update invitationCode set sum=sum+1, last=last-1 where invitationCode = #{invitationCodeId}")
-    void updateById_sum_last(String invitationCodeId);
+    @Update("update invitation_code set sum=sum+1, last=last-1 where invitation_code = #{invitationCode}")
+    void updateById_sum_last(String invitationCode);
 
     /**
      * 根据id删除
      */
-    @Delete("delete from invitationCode where  invitationCode = #{id} ")
+    @Delete("delete from invitation_code where invitation_code = #{id} ")
     void deleteById(String id);
 
     /**
      * 添加邀请码
      */
-    @Insert("insert into invitationCode(invitationCode, username, userId, accountType, createDate, sum, last) " +
+    @Insert("insert into invitation_code(invitation_code, username, userId, accountType, createDate, sum, last) " +
             "values(#{invitationCode}, #{username}, #{userId}, #{accountType}, #{createDate}, #{sum}, #{last})")
     void save(InvitationCode code);
 
@@ -65,7 +65,7 @@ public interface InvitationCodeMapper extends Mapper<InvitationCode> {
      * <p>
      * username accountType sum last
      */
-    @Update("update invitationCode set username=#{username}, userId=#{userId}, accountType=#{accountType}, sum=#{sum}, last=#{last}" +
-            " where invitationCode = #{invitationCode}")
+    @Update("update invitation_code set username=#{username}, userId=#{userId}, accountType=#{accountType}, sum=#{sum}, last=#{last}" +
+            " where invitation_code = #{invitationCode}")
     void updateById_username_accountType_sum_last(InvitationCode invitationCode);
 }

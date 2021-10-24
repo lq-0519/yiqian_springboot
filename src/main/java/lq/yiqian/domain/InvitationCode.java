@@ -10,7 +10,7 @@ import java.util.Date;
  * @author LQ
  * @create 2020-06-24 15:39
  */
-@Table(name = "invitationCode")
+@Table(name = "invitation_code")
 public class InvitationCode implements Serializable {
     /**
      * 邀请码, 也作为主键
