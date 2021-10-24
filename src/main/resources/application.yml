@@ -18,7 +18,10 @@ spring:
       prefix: /
       suffix: .jsp
 mybatis:
-  type-aliases-package: lq.yiqian.domain
+  type-aliases-package: lq.yiqian
+  mapper-locations: classpath:mapper/*.xml
+
+#  config-location: classpath:mybatis-config.xml
 
 #jasypt: # 项目使用jasypt加密
 #  encryptor:

@@ -1,5 +1,6 @@
 package lq.yiqian.service;
 
+import lq.yiqian.dao.query.InvitationCodeQuery;
 import lq.yiqian.domain.InvitationCode;
 
 import java.util.List;
@@ -24,4 +25,9 @@ public interface IInvitationCodeService {
     void save(String invitationCode, String username, String userId, Integer accountType);
 
     void updateInvitationCodeDetials(InvitationCode invitationCode);
+
+    /**
+     * 查列表
+     */
+    List<lq.yiqian.dao.domain.InvitationCode> queryForList(InvitationCodeQuery invitationCodeQuery, int page, int pageSize);
 }

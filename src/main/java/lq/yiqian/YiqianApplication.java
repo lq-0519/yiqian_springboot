@@ -4,6 +4,7 @@ import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -13,8 +14,10 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 @MapperScan("lq.yiqian.mapper")
+@org.mybatis.spring.annotation.MapperScan("lq.yiqian.dao")
 @ServletComponentScan
 @EnableEncryptableProperties
+@EnableScheduling
 public class YiqianApplication {
 
     public static void main(String[] args) {

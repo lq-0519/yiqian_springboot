@@ -1,6 +1,9 @@
 package lq.yiqian.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import lombok.extern.log4j.Log4j2;
+import lq.yiqian.dao.InvitationCodeDao;
+import lq.yiqian.dao.query.InvitationCodeQuery;
 import lq.yiqian.mapper.InvitationCodeMapper;
 import lq.yiqian.domain.InvitationCode;
 import lq.yiqian.service.IInvitationCodeService;
@@ -13,13 +16,18 @@ import java.util.Random;
 
 /**
  * 邀请码
+ *
  * @author LQ
  * @create 2020-06-24 17:36
  */
 @Service
+@Log4j2
 public class InvitationCodeService implements IInvitationCodeService {
     @Resource
     private InvitationCodeMapper invitationCodeMapper;
+
+    @Resource
+    private InvitationCodeDao invitationCodeDao;
 
     @Override
     public List<InvitationCode> findAll() {
@@ -79,7 +87,6 @@ public class InvitationCodeService implements IInvitationCodeService {
 
     /**
      * 产生一个随机的邀请码
-     *
      */
     private String getRandomString() {
         String str = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -128,5 +135,15 @@ public class InvitationCodeService implements IInvitationCodeService {
         invitationCodeMapper.updateById_username_accountType_sum_last(invitationCode);
     }
 
+    @Override
+    public List<lq.yiqian.dao.domain.InvitationCode> queryForList(InvitationCodeQuery invitationCodeQuery, int page, int pageSize) {
+        if (invitationCodeQuery == null) {
+            log.warn("InvitationCodeService.queryForList, 查询入参为空");
+            return null;
+        }
 
+        invitationCodeQuery.setPage(page);
+        invitationCodeQuery.setPageSize(pageSize);
+        return invitationCodeDao.queryForList(invitationCodeQuery);
+    }
 }

@@ -14,6 +14,7 @@ import java.util.List;
  */
 @Service("variableService")
 public class VariableService implements IVariableService {
+
     @Resource
     private VariableMapper variablemapper;
 

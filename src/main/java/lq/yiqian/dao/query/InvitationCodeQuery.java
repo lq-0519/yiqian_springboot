@@ -1,24 +1,19 @@
-package lq.yiqian.domain;
+package lq.yiqian.dao.query;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 存储每一个邀请码信息
- * @author LQ
- * @create 2020-06-24 15:39
+ * @author liqian477
+ * @date 2021/10/24 13:58
  */
-@Table(name = "invitationCode")
-public class InvitationCode implements Serializable {
+public class InvitationCodeQuery extends BaseQuery implements Serializable {
 
-    private static final long serialVersionUID = 108100464736564656L;
+    private static final long serialVersionUID = 888686605856259159L;
 
     /**
      * 邀请码, 也作为主键
      */
-    @Id
     private String invitationCode;
 
     /**
@@ -50,6 +45,7 @@ public class InvitationCode implements Serializable {
      * 当前邀请码今天剩余的登记次数
      */
     private Integer last;
+
 
     public String getInvitationCode() {
         return invitationCode;
@@ -109,7 +105,7 @@ public class InvitationCode implements Serializable {
 
     @Override
     public String toString() {
-        return "InvitationCode{" +
+        return "InvitationCodeQuery{" +
                 "invitationCode='" + invitationCode + '\'' +
                 ", username='" + username + '\'' +
                 ", userId='" + userId + '\'' +

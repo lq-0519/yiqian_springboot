@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--你接口的包名是com.abc.dao,接口名是NameMapper.java，那么你的mapper.xml的namespace应该是com.abc.dao.NameMapper-->
+<mapper namespace="lq.yiqian.dao.InvitationCodeDao">
+
+    <!--resultMap对应的是表与实体类的映射  - type 数据库表对应的实体类，别名或完整类名都可以-->
+    <resultMap id="defaultResultMap" type="lq.yiqian.dao.domain.InvitationCode">
+        <!-- 结果集的主键 -->
+        <id column="invitationCode" property="invitationCode"/>
+        <!-- 普通的列  -column 是数据库中字段， property是实体类中字段-->
+        <result column="username" property="username"/>
+        <result column="userId" property="userId"/>
+        <result column="accountType" property="accountType"/>
+        <result column="createDate" property="createDate"/>
+        <result column="sum" property="sum"/>
+        <result column="last" property="last"/>
+    </resultMap>
+
+    <!-- 所有字段 -->
+    <sql id="allColumns"> invitationCode, username, userId, accountType, createDate, sum, last</sql>
+
+    <!-- 查询条件 -->
+    <sql id="dynamicWhere">
+        <if test="invitationCode != null">
+            AND invitationCode = #{invitationCode}
+        </if>
+        <if test="username != null">
+            AND username = #{username}
+        </if>
+        <if test="userId != null">
+            AND userId = #{userId}
+        </if>
+        <if test="accountType != null">
+            AND accountType = #{accountType}
+        </if>
+        <if test="createDate != null">
+            AND createDate = #{createDate}
+        </if>
+        <if test="sum != null">
+            AND sum = #{sum}
+        </if>
+        <if test="last != null">
+            AND last = #{last}
+        </if>
+    </sql>
+
+
+    <!--parameterType(输入类型)、resultType(输出类型)-->
+    <!-- 查列表 -->
+    <select id="queryForList" parameterType="lq.yiqian.dao.query.InvitationCodeQuery" resultMap="defaultResultMap">
+        SELECT
+        <include refid="allColumns"/>
+        FROM
+        invitationCode
+        WHERE 1=1
+        <include refid="dynamicWhere"/>
+        ORDER BY createDate
+        LIMIT #{startRow} , #{pageSize}
+    </select>
+
+</mapper>
