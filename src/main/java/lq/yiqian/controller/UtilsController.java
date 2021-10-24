@@ -1,5 +1,6 @@
 package lq.yiqian.controller;
 
+import lombok.extern.log4j.Log4j2;
 import lq.yiqian.service.IUtilsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
  * @create 2021-05-06 21:04
  */
 @Controller
+@Log4j2
 @RequestMapping("utils")
 public class UtilsController {
     @Resource

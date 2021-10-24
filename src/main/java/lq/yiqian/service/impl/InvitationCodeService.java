@@ -1,8 +1,9 @@
 package lq.yiqian.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import lq.yiqian.mapper.InvitationCodeMapper;
+import lombok.extern.log4j.Log4j2;
 import lq.yiqian.domain.InvitationCode;
+import lq.yiqian.mapper.InvitationCodeMapper;
 import lq.yiqian.service.IInvitationCodeService;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,12 @@ import java.util.Random;
 
 /**
  * 邀请码
+ *
  * @author LQ
  * @create 2020-06-24 17:36
  */
 @Service
+@Log4j2
 public class InvitationCodeService implements IInvitationCodeService {
     @Resource
     private InvitationCodeMapper invitationCodeMapper;
@@ -79,7 +82,6 @@ public class InvitationCodeService implements IInvitationCodeService {
 
     /**
      * 产生一个随机的邀请码
-     *
      */
     private String getRandomString() {
         String str = "abcdefghijklmnopqrstuvwxyz0123456789";
