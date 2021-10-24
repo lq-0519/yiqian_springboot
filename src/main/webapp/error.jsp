@@ -20,8 +20,7 @@
 <div class="container">
     <h2>页面出错啦</h2>
     <h3>可以联系管理员报告错误~</h3>
-    <h3>管理员微信: </h3>
-    <img class="img-responsive col-md-3 " src="static/img/contactMeWecat.jpeg" alt="与我联系"><br>
+    <h3>管理员qq: 931722548 </h3>
     ${errorMsg}
 </div>
 

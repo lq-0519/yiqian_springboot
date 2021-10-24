@@ -46,7 +46,7 @@
         </div>
         <img class="img-responsive col-md-7 " src="static/img/img6.jpeg">
         <img class="img-responsive col-md-7 " src="static/img/img7.JPEG">
-        <img class="img-responsive col-md-7 " src="static/img/img8.jpeg">
+<%--        <img class="img-responsive col-md-7 " src="static/img/img8.jpeg">--%>
 
     </div>
 </div>
