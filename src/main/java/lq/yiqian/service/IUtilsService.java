@@ -21,4 +21,9 @@ public interface IUtilsService {
     void dataTransferToES();
 
     void updateSearchNum();
+
+    /**
+     * 一键更新登记数不为3的邀请码
+     */
+    void updateLastNumTo3();
 }

@@ -27,8 +27,8 @@ public class BusinessTask {
      * <p>
      * 每天凌晨一点更新
      */
-    @Scheduled(cron = "0 0 1 * * ?")
-    public void canRegisterNumJob() {
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void updateLastNumJob() {
         Example example = new Example(InvitationCode.class);
         example.createCriteria()
                 .andNotEqualTo("last", 3);

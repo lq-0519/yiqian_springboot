@@ -67,4 +67,14 @@ public class UtilsController {
         utilsService.updateSearchNum();
         return "更新总搜索次数 任务提交";
     }
+
+    /**
+     * 一键更新登记数不为3的邀请码
+     */
+    @ResponseBody
+    @RequestMapping("updateLastNumTo3")
+    public String updateLastNumTo3(){
+        utilsService.updateLastNumTo3();
+        return "任务提交";
+    }
 }

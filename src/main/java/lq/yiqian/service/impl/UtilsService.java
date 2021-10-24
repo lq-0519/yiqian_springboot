@@ -1,6 +1,7 @@
 package lq.yiqian.service.impl;
 
 import lombok.extern.log4j.Log4j2;
+import lq.yiqian.common.task.scheduledTask.BusinessTask;
 import lq.yiqian.mapper.BookListMapper;
 import lq.yiqian.service.ISearchHistoryService;
 import lq.yiqian.service.IUtilsService;
@@ -46,6 +47,9 @@ public class UtilsService implements IUtilsService {
 
     @Resource
     private ISearchHistoryService searchHistoryService;
+
+    @Resource
+    private BusinessTask businessTask;
 
     @Override
     public void addAll() {
@@ -126,5 +130,10 @@ public class UtilsService implements IUtilsService {
         Integer searchTotal = searchHistoryService.getTotalCount();
         // 将总的搜索次数放到session中
         servletContext.setAttribute("searchTotal", searchTotal + "");
+    }
+
+    @Override
+    public void updateLastNumTo3() {
+        businessTask.updateLastNumJob();
     }
 }
