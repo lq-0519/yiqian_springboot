@@ -1,5 +1,6 @@
 package lq.yiqian.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ public class InvitationCode implements Serializable {
      * 邀请码, 也作为主键
      */
     @Id
+    @Column(name = "invitation_code")
     private String invitationCode;
 
     /**
