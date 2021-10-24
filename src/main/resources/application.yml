@@ -19,6 +19,8 @@ spring:
       suffix: .jsp
 mybatis:
   type-aliases-package: lq.yiqian.domain
+  configuration:
+    map-underscore-to-camel-case: true
 
 #jasypt: # 项目使用jasypt加密
 #  encryptor:
