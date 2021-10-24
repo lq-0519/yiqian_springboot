@@ -28,10 +28,13 @@ import java.util.Date;
 @RequestMapping("/book")
 @Log4j2
 public class BookListController {
+
     @Resource
     private IBookListService bookListService;
+
     @Resource
     private ISearchHistoryService searchHistoryService;
+
     @Resource
     private ServletContext servletContext;
 
