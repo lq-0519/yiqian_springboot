@@ -57,7 +57,7 @@ public class BookListController {
             return modelAndView;
         }
         // 默认一页13条数据
-        PageInfo<Book> pageInfo = bookListService.findByBookName(bookName, page, 13);
+        PageInfo<Book> pageInfo = bookListService.findByBookName(bookName, page, 10);
         //获取查询到的结果数
         long total = pageInfo.getTotal();
         modelAndView.addObject("bookName", bookName);

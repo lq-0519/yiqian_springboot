@@ -1,5 +1,6 @@
 package lq.yiqian.utils.threadPool;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PreDestroy;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit;
  * @create 2021-10-17 19:04
  */
 @Component
+@Log4j2
 public class ThreadPoolUtils {
 
     /**
@@ -89,6 +91,8 @@ public class ThreadPoolUtils {
 
     @PreDestroy
     public void destroy() {
+        log.warn("关闭线程池开始...");
         getCommonExecutorService().shutdown();
+        log.warn("关闭线程池结束...");
     }
 }

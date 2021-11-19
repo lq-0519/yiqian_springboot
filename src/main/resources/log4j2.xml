@@ -41,6 +41,16 @@
             <DefaultRolloverStrategy max="15"/>
         </RollingFile>
 
+        <RollingFile name="RollingFileINFO" fileName="${FILE_PATH}/info.log" filePattern="${FILE_PATH}/${FILE_NAME}-info-%d{yyyy-MM-dd}_%i.log.gz">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="15"/>
+        </RollingFile>
+
         <!--业务日志输出配置-->
         <RollingFile name="BusinessLog" fileName="${FILE_PATH}/businessLog.log" filePattern="${FILE_PATH}/${FILE_NAME}-businessLog-%d{yyyy-MM-dd}_%i.log.gz">
             <!--业务日志只输出info及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
@@ -62,19 +72,19 @@
 
         <!--监控系统信息-->
         <logger name="org" level="debug" additivity="false">
-            <appender-ref ref="RollingFileDebug"/>
+            <appender-ref ref="RollingFileINFO"/>
             <AppenderRef ref="Console"/>
         </logger>
         <logger name="com" level="debug" additivity="false">
-            <appender-ref ref="RollingFileDebug"/>
+            <appender-ref ref="RollingFileINFO"/>
             <AppenderRef ref="Console"/>
         </logger>
         <logger name="io" level="debug" additivity="false">
-            <appender-ref ref="RollingFileDebug"/>
+            <appender-ref ref="RollingFileINFO"/>
             <AppenderRef ref="Console"/>
         </logger>
         <logger name="tk" level="debug" additivity="false">
-            <appender-ref ref="RollingFileDebug"/>
+            <appender-ref ref="RollingFileINFO"/>
             <AppenderRef ref="Console"/>
         </logger>
 

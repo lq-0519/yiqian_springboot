@@ -1,6 +1,7 @@
 package lq.yiqian.service.impl;
 
 import com.github.pagehelper.PageInfo;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import lq.yiqian.mapper.BookListMapper;
 import lq.yiqian.service.IBookListService;
@@ -12,12 +13,13 @@ import javax.annotation.Resource;
 
 /**
  * 查询书单的service层
+ *
  * @author LQ
  * @create 2020-06-24 15:57
  */
 @SuppressWarnings("AlibabaServiceOrDaoClassShouldEndWithImpl")
 @Service
-@Slf4j
+@Log4j2
 public class BookListService implements IBookListService {
     @Resource
     private UtilsService utilsService;
@@ -30,6 +32,7 @@ public class BookListService implements IBookListService {
      */
     @Override
     public PageInfo<Book> findByBookName(String bookName, int page, int size) {
+        log.warn("使用书名查书, 缓存未命中, bookName:{}, page:{}, size:{}", bookName, page, size);
         AggregatedPage<Book> books = utilsService.findByBookName(bookName, page, size);
         PageInfo<Book> pageInfo = new PageInfo<>(books.getContent());
         pageInfo.setPageNum(page);
