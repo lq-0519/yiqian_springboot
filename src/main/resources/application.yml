@@ -6,7 +6,7 @@ spring:
       cluster-name: ENC(gaBqGWoAcof4a4L7MMojxdiaxTeAf5qyZOyoxmrvfek=)
       cluster-nodes: 182.92.81.132:9300 # 程序连接es的端口号是9300
   datasource: # 设置数据库相关
-    url: jdbc:mysql://182.92.81.132/yiqianLibrary?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://182.92.81.132/yiqianLibrary?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: ENC(7Kcv4fPB3xlPI+UgtA8GYL2Cp/MSzQ7A)
     driver-class-name: com.mysql.jdbc.Driver
